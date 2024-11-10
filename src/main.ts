@@ -8,8 +8,15 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['log', 'error', 'warn', 'debug', 'verbose'],
   });
+
   app.useGlobalPipes(new ValidationPipe());
   app.setGlobalPrefix('api');
+
+  app.enableCors({
+    origin: 'http://localhost:5173/',
+    methods: 'GET, POST, PUT, DELETE, PATCH',
+    allowedHeaders: 'Content-Type',
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Bookshelf API')
