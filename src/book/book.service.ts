@@ -11,9 +11,7 @@ export class BookService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createBookDto: CreateBookDto) {
-    return await this.prisma.book.create({
-      data: createBookDto,
-    });
+    return await this.prisma.book.create({ data: createBookDto });
   }
 
   async findAll() {

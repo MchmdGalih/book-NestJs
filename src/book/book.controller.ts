@@ -45,10 +45,8 @@ export class BookController {
 
     return {
       status: 'success',
-      message: 'Books found',
-      data: {
-        books,
-      },
+      message: 'retrieved all books',
+      data: books,
     };
   }
 
@@ -59,7 +57,7 @@ export class BookController {
     const book = await this.bookService.findOne(+id);
     return {
       status: 'success',
-      message: 'Book retrieved successfully',
+      message: `get detail book with ${book.id} or ${book.title} success`,
       data: book,
     };
   }
@@ -86,10 +84,10 @@ export class BookController {
   @Delete(':id')
   @ApiOperation({ summary: 'Delete a book by ID (soft delete)' })
   async remove(@Param('id') id: string) {
-    await this.bookService.remove(+id);
+    const book = await this.bookService.remove(+id);
     return {
       status: 'success',
-      message: 'Book deleted successfully',
+      message: `delete book with ${book.id} or ${book.title} success`,
     };
   }
 }
