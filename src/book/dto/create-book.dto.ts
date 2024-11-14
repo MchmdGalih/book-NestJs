@@ -1,6 +1,4 @@
-import { IsDate, IsOptional, IsString } from 'class-validator';
-
-import { Type } from 'class-transformer';
+import { IsDate, IsDateString, IsOptional, IsString } from 'class-validator';
 
 export class CreateBookDto {
   @IsString()
@@ -12,9 +10,8 @@ export class CreateBookDto {
   @IsString()
   description: string;
 
-  @Type(() => Date)
-  @IsDate()
-  release_date: Date;
+  @IsDateString()
+  release_date: string;
 
   @IsOptional()
   @IsDate()

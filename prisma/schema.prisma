@@ -18,6 +18,6 @@ model Book {
   title           String      
   author          String 
   description     String
-  release_date    DateTime    @default(now())
+  release_date    DateTime    
   delete_at       DateTime?
 }
